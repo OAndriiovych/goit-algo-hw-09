@@ -1,3 +1,7 @@
+import time
+import timeit
+
+
 def find_coins_greedy(target_rest, coins=[50, 25, 10, 5, 2, 1]):
     result = {}
     for coin in coins:
@@ -27,5 +31,15 @@ def find_min_coins(target_rest, coins=[50, 25, 10, 5, 2, 1]):
     return result
 
 
-print(find_coins_greedy(134))
-print(find_min_coins(23))
+if __name__ == '__main__':
+    mysetup = "from rest import find_coins_greedy"
+    mycode = "find_coins_greedy(134)"
+
+    print(timeit.timeit(setup=mysetup,
+                        stmt=mycode,
+                        number=10000))
+    mysetup = "from rest import find_min_coins"
+    mycode = "find_min_coins(134)"
+    print(timeit.timeit(setup=mysetup,
+                        stmt=mycode,
+                        number=10000))
